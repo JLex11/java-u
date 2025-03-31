@@ -20,16 +20,12 @@ public class Triki {
             imprimirTablero();
             hacerMovimiento();
             juegoTerminado = verificarGanador() || verificarEmpate();
-            cambiarJugador();
+            if (!juegoTerminado) cambiarJugador();
         }
 
         imprimirTablero();
-        if (verificarGanador()) {
-            cambiarJugador(); // Para mostrar el jugador ganador correcto
-            System.out.println("¡El jugador " + jugadorActual + " ha ganado!");
-        } else {
-            System.out.println("¡Empate!");
-        }
+        if (verificarGanador()) System.out.println("¡El jugador " + jugadorActual + " ha ganado!");
+        else System.out.println("¡Empate!");
         scanner.close();
     }
 
@@ -41,11 +37,8 @@ public class Triki {
         for (int i = 0; i < 3; i++) {
             System.out.print("| ");
             for (int j = 0; j < 3; j++) {
-                if (tablero[i][j] == ' ') {
-                    System.out.print(contador);
-                } else {
-                    System.out.print(tablero[i][j]);
-                }
+                if (tablero[i][j] == ' ') System.out.print(contador);
+                else System.out.print(tablero[i][j]);
 
                 if (j < 2) System.out.print(" | ");
                 contador++;
@@ -53,9 +46,7 @@ public class Triki {
             System.out.print(" |");
 
             System.out.println();
-            if (i < 2) {
-                System.out.println("-------------");
-            }
+            if (i < 2) System.out.println("-------------");
         }
 
         System.out.println("-------------");
@@ -67,11 +58,8 @@ public class Triki {
         while (true) {
             System.out.println("Jugador " + jugadorActual + ", introduce un número del 1 al 9 para hacer tu movimiento:");
             posicion = scanner.nextInt();
-            if (posicion >= 1 && posicion <= 9 && esCasillaLibre(posicion)) {
-                break;
-            } else {
-                System.out.println("¡Posición inválida o ya ocupada! Intenta de nuevo.");
-            }
+            if (posicion >= 1 && posicion <= 9 && esCasillaLibre(posicion)) break;
+            else System.out.println("¡Posición inválida o ya ocupada! Intenta de nuevo.");
         }
         colocarSimbolo(posicion);
     }
