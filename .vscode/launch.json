@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Triki",
+            "request": "launch",
+            "mainClass": "com.mytriki.app.Triki",
+            "projectName": "my-app"
+        },
+        {
+            "type": "java",
+            "name": "Triki",
+            "request": "launch",
+            "mainClass": "com.mycompany.app.Triki",
+            "projectName": "my-app"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "cwd": "${workspaceFolder}",
